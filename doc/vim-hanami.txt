@@ -1,0 +1,91 @@
+hanami.txt	For Vim version 8.0	Last change: 2017-10-22
+
+1. About vim-hanami                      |vim-hanami-about|
+2. Quickstart                            |vim-hanami-quickstart|
+3. Commands                              |vim-hanami-commands|
+  3.1 Navigation                         |vim-hanami-commands-nav|
+
+==================================================================
+
+1. About vim-hanami                               *vim-hanami-about*
+
+Vim-hanami has two main sets of commands. One enables quick
+navigation around hanami project, second one wraps most common
+operations done with hanami command line tool.
+
+==================================================================
+
+2. Quickstart
+
+For quickstart, you are probably most interested in following four
+commands from |vim-hanami-functions-nav| section:
+
+>
+    nnoremap <leader>s :HanamiToggleSpec<CR>
+    nnoremap <leader>c :HanamiGoToController<CR>
+    nnoremap <leader>v :HanamiGoToView<CR>
+    nnoremap <leader>t :HanamiGoToTemplate<CR>
+<
+
+See |vim-hanami-commands-nav| for details.
+
+==================================================================
+
+Commands                                       *vim-hanami-commands*
+
+Navigation                                 *vim-hanami-commands-nav*
+------------------------------------------------------------------
+
+HanamiGoToSpec                                      *HanamiGoToSpec*
+
+Goes to specification file for the currently opened file.
+
+apps/web/controllers/foo/bar.rb
+  -> spec/web/controllers/foo/bar_spec.rb.
+
+apps/web/views/foo/bar.rb
+  -> spec/web/views/foo/bar_spec.rb
+
+If no spec file is found, warning is shown.
+
+HanamiGoFromSpec                                  *HanamiGoFromSpec*
+
+Goes back to file specification is for.
+
+spec/web/controllers/foo/bar_spec.rb.
+  -> apps/web/controllers/foo/bar.rb
+
+spec/web/views/foo/bar_spec.rb
+  -> apps/web/views/foo/bar.rb
+
+If the other file is not found, warning is shown.
+
+HanamiToggleSpec                                  *HanamiToggleSpec*
+
+If current file is specification, calls |HanamiGoFromSpec|,
+otherwise calls |HanamiGoToSpec|.
+
+HanamiGoToController                          *HanamiGoToController*
+
+Goes to related controller.
+
+spec/web/controllers/foo/bar_spec.rb.
+  -> apps/web/controllers/foo/bar.rb
+
+spec/web/views/foo/bar_spec.rb
+  -> apps/web/controllers/foo/bar.rb
+
+apps/web/views/foo/bar.rb
+  -> apps/web/controllers/foo/bar.rb
+
+If not found, warning is shown.
+
+HanamiGoToView                                      *HanamiGoToView*
+
+Goes to related view.
+
+HanamiGoToTemplate                              *HanamiGoToTemplate*
+
+Goes to related template.
+
+/* vim: set tabstop=8 textwidth=78 noexpandtab ft=help: */
